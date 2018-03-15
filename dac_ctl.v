@@ -18,6 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
 module dac_ctl(
     input reset_n,
     input dac_clk_in,
@@ -50,7 +51,7 @@ else
 begin
 if(ctl_data_val == 1'b1)
 	if(rom_addr >= 10'd600)
-	rom_addr <= Finc[7:0];//±£Ö¤Á¬Ğø
+	rom_addr <= Finc[7:0];//ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
 	else
 	rom_addr <= rom_addr + Finc[7:0];
 else

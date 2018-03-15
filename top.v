@@ -18,6 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
 module top(
     input RXD,
     output TXD,
@@ -26,7 +27,7 @@ module top(
     output DAC_CLK,
     output [14:0] RELAY,
     input CLK_25M,
-	 //CDCE706 Òý½Å
+	 //CDCE706 ï¿½ï¿½ï¿½ï¿½
 	 input DAC_CLK_IN,
 	 
 	 output sda,
@@ -51,7 +52,7 @@ assign sda = 1'b1;
 assign scl = 1'b1;
 assign s = 2'b11;
 
-//Ê±ÖÓÄ£¿é
+//Ê±ï¿½ï¿½Ä£ï¿½ï¿½
 clock FPGA_PLL_mod
    (// Clock in ports
     .CLK_IN1(CLK_25M),      // IN
@@ -63,9 +64,9 @@ clock FPGA_PLL_mod
     .CLK_OUT5(CLK120),     // OUT
     // Status and control signals
     .RESET(RESET));       // IN
-//Ê±ÖÓ£¬DACÊ¹ÓÃ120MÊ±ÖÓ
+//Ê±ï¿½Ó£ï¿½DACÊ¹ï¿½ï¿½120MÊ±ï¿½ï¿½
 
-//´®¿ÚÊ¹ÓÃ25MÊ±ÖÓ
+//ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½25MÊ±ï¿½ï¿½
  
 //clk_mux clk_mux_mod(
 //	.clk_25M(CLK25),
@@ -88,14 +89,14 @@ clock FPGA_PLL_mod
 //      .I(dac_clk_sel)  // 1-bit input: Clock buffer input
 //   );
 
-////////////////////////////////////½«Ê±ÖÓÑ¡Ôñ²¿·Ö·ÅÔÚ¶¥²ã·½±ã²¼Ïß////////////////////////////////////////////////////////////////
+////////////////////////////////////ï¿½ï¿½Ê±ï¿½ï¿½Ñ¡ï¿½ñ²¿·Ö·ï¿½ï¿½Ú¶ï¿½ï¿½ã·½ï¿½ã²¼ï¿½ï¿½////////////////////////////////////////////////////////////////
 /*
 	clk_select È¡Öµ
-	20ÅäÖÃÊ±ÖÓÎª25M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
-	21ÅäÖÃÊ±ÖÓÎª50M		s25or50 <=1'b1 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
-	22ÅäÖÃÊ±ÖÓÎª60M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b1;
-	23ÅäÖÃÊ±ÖÓÎª100M		s25or50 <=1'b0 ; s25_50or100 <= 1'b1 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
-	24ÅäÖÃÊ±ÖÓÎª120M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b1 ; s100or120 <=1'b1;
+	20ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª25M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
+	21ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª50M		s25or50 <=1'b1 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
+	22ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª60M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b0 ; s100or120 <=1'b1;
+	23ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª100M		s25or50 <=1'b0 ; s25_50or100 <= 1'b1 ; s60or120 <=1'b0 ; s100or120 <=1'b0;
+	24ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Îª120M		s25or50 <=1'b0 ; s25_50or100 <= 1'b0 ; s60or120 <=1'b1 ; s100or120 <=1'b1;
 */
 wire clk25or50, clk25_50or100, clk60or120;
 
@@ -138,7 +139,7 @@ wire [14:0] DAC_DB_port25or50 , DAC_DB_port60or120 , DAC_DB_port100;
 //ROM 25or50
 dac_ctl dac_ctl_mod25or50(
      .reset_n(RESET),
-     .dac_clk_in(clk25or50),  // Êµ¼ÊÊ¹ÓÃÎª DAC_CLK_IN    ²âÊÔÓÃCLK25
+     .dac_clk_in(clk25or50),  // Êµï¿½ï¿½Ê¹ï¿½ï¿½Îª DAC_CLK_IN    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CLK25
      .signal_select(sin_select),
 	  .clk_select	(clk_select),
      .ctl_data_val	(clk_ctl_val && sin_ctl_val),
@@ -148,18 +149,18 @@ dac_ctl dac_ctl_mod25or50(
 dac_ctl dac_ctl_mod25or50(
 
      .reset_n(RESET),
-     .dac_clk_in(s60or120),  // Êµ¼ÊÊ¹ÓÃÎª DAC_CLK_IN    ²âÊÔÓÃCLK25
+     .dac_clk_in(s60or120),  // Êµï¿½ï¿½Ê¹ï¿½ï¿½Îª DAC_CLK_IN    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CLK25
      .signal_select(sin_select),
 	  .clk_select	(clk_select),
      .ctl_data_val	(clk_ctl_val && sin_ctl_val),
      .dac_db			(DAC_DB_port60or120),
     );
 /////////////////////////////////////////////////////////////////////////////////////////////////
-//DAC Êä³öÄ£¿é
+//DAC ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 dac_ctl dac_ctl_mod(
 
      .reset_n(RESET),
-     .dac_clk_in(CLK100),  // Êµ¼ÊÊ¹ÓÃÎª DAC_CLK_IN    ²âÊÔÓÃCLK25
+     .dac_clk_in(CLK100),  // Êµï¿½ï¿½Ê¹ï¿½ï¿½Îª DAC_CLK_IN    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CLK25
      .signal_select(sin_select),
 	  .clk_select	(clk_select),
      .ctl_data_val	(clk_ctl_val && sin_ctl_val),
@@ -188,24 +189,24 @@ ODDR2 #(
       .R(1'b0),   // 1-bit reset input
       .S(1'b0)    // 1-bit set input
    );
-//ÏµÍ³¿ØÖÆÄ£¿é
+//ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 
 sys_ctl sys_ctl_mod(
     .clk_25M		(CLK25),
     .reset_n		(RESET),
-    .rxd_flag		(rxd_flag),	// ´®¿Ú½ÓÊÕÊý¾Ý±êÖ¾£¬ÖÃ¸ßÒ»¸öÖÜÆÚ
-    .rxd_data		(rxd_data), //´®¿Ú½ÓÊÕÊý¾Ý¶Ë¿Ú
-    .txd_flag		(txd_flag),//ÓÐÊý¾Ý·¢ËÍÊ±ÖÃ¸ßÒ»¸öÖÜÆÚ
-	 .txd_complete (txd_complete), //´®¿Ú·¢ËÍÒ»¸ö×Ö½ÚÍê³É
-    .txd_data		(txd_data),//·µ»ØÊý¾Ý
-    .clk_select	(clk_select),//Êä³öÊ±ÖÓÑ¡Ôñ
-    .sin_select	(sin_select),//Êä³öÐÅºÅÆµÂÊÑ¡Ôñ
-    .clk_ctl_val	(clk_ctl_val),//Êä³öÊý¾Ý¿ØÖÆÓÐÐ§
-    .sin_ctl_val	(sin_ctl_val),//Êä³öÊý¾Ý¿ØÖÆÓÐÐ§
-    .RELAY			(RELAY),//¼ÌµçÆ÷¿ØÖÆ¶Ë¿Ú
-    .DAC_SLEEP		(DAC_SLEEP)	//DAC ÐÝÃß¶Ë¿Ú ¸ßµçÆ½ÓÐÐ§
+    .rxd_flag		(rxd_flag),	// ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½Ö¾ï¿½ï¿½ï¿½Ã¸ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    .rxd_data		(rxd_data), //ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶Ë¿ï¿½
+    .txd_flag		(txd_flag),//ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½Ê±ï¿½Ã¸ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 .txd_complete (txd_complete), //ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½
+    .txd_data		(txd_data),//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    .clk_select	(clk_select),//ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ñ¡ï¿½ï¿½
+    .sin_select	(sin_select),//ï¿½ï¿½ï¿½ï¿½Åºï¿½Æµï¿½ï¿½Ñ¡ï¿½ï¿½
+    .clk_ctl_val	(clk_ctl_val),//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+    .sin_ctl_val	(sin_ctl_val),//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+    .RELAY			(RELAY),//ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ë¿ï¿½
+    .DAC_SLEEP		(DAC_SLEEP)	//DAC ï¿½ï¿½ï¿½ß¶Ë¿ï¿½ ï¿½ßµï¿½Æ½ï¿½ï¿½Ð§
     );
-//422·¢ËÍ Ä£¿é
+//422ï¿½ï¿½ï¿½ï¿½ Ä£ï¿½ï¿½
 wire txd_bps_start,txd_bps_clk;
 uart_clk TXD_uart_clk_mod(
      .clk(CLK25),
@@ -225,7 +226,7 @@ uart_txd uart_txd_mod(
 //	txd_fifo_rdreq
 );
 
-//422½ÓÊÕÄ£¿é
+//422ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 wire rxd_clk_bps , rxd_bps_start;
 uart_rxd uart_rxd_mod(
 	.clk			(CLK25),
